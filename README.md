@@ -1,8 +1,35 @@
-# React + Vite
+# Sports Day Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Getting Started
 
-Currently, two official plugins are available:
+### Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+```
+
+### Start dev server
+
+```bash
+npm run dev
+```
+
+### Deploy
+
+First build the project
+
+```bash
+npm build
+```
+
+This creates our build in dist folder. This folder can be pushed to any webhosting platform.
+
+## Folder Structure
+
+- **assets** - static assets eg:- images,videos,pdf
+- **components** - Stand alone react components
+- **pages** - Component corresponding each route
+  - **api.js** - hooks for APIs used by the page
+- **context** - for housing React.Context eg: AuthContext
+- **hooks\*** - Global utility hooks
+- **utils.js** - Global utility tools
