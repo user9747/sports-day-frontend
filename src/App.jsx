@@ -6,7 +6,7 @@ import AuthenticatedContainer from "./components/AuthenticatedContainer";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin/Admin";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { LOCALSTORAGE_KEYS } from "./utils";
 
 const queryClient = new QueryClient({
@@ -17,9 +17,7 @@ const queryClient = new QueryClient({
           error?.response?.status === 401 &&
           window.location.href !== "/login"
         ) {
-          for (const key in Object.keys(LOCALSTORAGE_KEYS)) {
-            localStorage.removeItem(key);
-          }
+          removeFromLocalStorage();
           window.location.href = "/login";
           return false;
         }
@@ -40,14 +38,13 @@ function App() {
     <>
       <ToastContainer
         position="top-right"
-        autoClose={1000}
+        autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
         theme="light"
       />
       <QueryClientProvider client={queryClient}>

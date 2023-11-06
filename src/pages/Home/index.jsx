@@ -28,11 +28,11 @@ function Home() {
       return;
     }
 
-    registerEventMutation.mutate(event.id);
+    registerEventMutation.mutate(event);
   };
 
-  const onUnRegister = (eventId) => {
-    unRegisterEventMutation.mutate(eventId);
+  const onUnRegister = (event) => {
+    unRegisterEventMutation.mutate(event);
   };
 
   const filteredEvents = useMemo(() => {
@@ -86,7 +86,7 @@ function Home() {
               <EventCard
                 key={event.id}
                 event={event}
-                onSelect={() => onUnRegister(event.id)}
+                onSelect={() => onUnRegister(event)}
                 mode="unregister"
               />
             ))}

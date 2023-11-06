@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import axios from "../../axios";
-import { LOCALSTORAGE_KEYS } from "../utils";
+import { LOCALSTORAGE_KEYS, removeFromLocalStorage } from "../utils";
 
 const AuthContext = createContext();
 
@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     role: localStorage.getItem(LOCALSTORAGE_KEYS.ROLE),
     isAuthenticated: !!localStorage.getItem(LOCALSTORAGE_KEYS.TOKEN),
   });
-  
+
   //set token
   axios.defaults.headers.common["token"] = appState.token;
 
@@ -22,9 +22,7 @@ export const AuthProvider = ({ children }) => {
       role: "",
       isAuthenticated: false,
     });
-    localStorage.removeItem(LOCALSTORAGE_KEYS.TOKEN);
-    localStorage.removeItem(LOCALSTORAGE_KEYS.ROLE);
-    localStorage.removeItem(LOCALSTORAGE_KEYS.USERNAME);
+    removeFromLocalStorage();
   };
   return (
     <AuthContext.Provider

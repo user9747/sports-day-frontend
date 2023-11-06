@@ -5,6 +5,11 @@ export const LOCALSTORAGE_KEYS = {
   USERNAME: "sportsday.userName",
   ROLE: "sportsday.role",
 };
+export const removeFromLocalStorage = () => {
+  localStorage.removeItem(LOCALSTORAGE_KEYS.TOKEN);
+  localStorage.removeItem(LOCALSTORAGE_KEYS.ROLE);
+  localStorage.removeItem(LOCALSTORAGE_KEYS.USERNAME);
+};
 
 export const validateEventOverlap = (newEvent, events) => {
   const eventInterval = {

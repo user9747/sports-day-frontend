@@ -25,10 +25,10 @@ export const useGetRegisteredEvents = () =>
 export const useRegisterEvent = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (eventId) => axios.post(`events/register/${eventId}`),
+    mutationFn: (event) => axios.post(`events/register/${event.id}`),
     onSuccess: (data, input) => {
       queryClient.invalidateQueries({ queryKey: ["useGetRegisteredEvents"] });
-      toast.success("Registered Successfully");
+      toast.success(`Registered for ${input.name}`);
     },
   });
 };
@@ -36,10 +36,10 @@ export const useRegisterEvent = () => {
 export const useUnRegisterEvent = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (eventId) => axios.post(`events/unregister/${eventId}`),
+    mutationFn: (event) => axios.post(`events/unregister/${event.id}`),
     onSuccess: (data, input) => {
       queryClient.invalidateQueries({ queryKey: ["useGetRegisteredEvents"] });
-      toast.success("UnRegistered Successfully");
+      toast.info(`UnRegistered from ${input.name}`);
     },
   });
 };
